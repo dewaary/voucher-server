@@ -1,9 +1,11 @@
 var express = require('express');
+const { isLoginAdmin } = require('../middleware/auth');
 var router = express.Router();
 
 const {index, viewCreate, actionCreate, viewEdit, actionEdit, actionDelete} = require('./controller')
 
 /* GET home page. */
+router.use(isLoginAdmin)
 router.get('/', index);
 router.get('/create', viewCreate);
 router.post('/create', actionCreate);

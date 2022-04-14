@@ -12,7 +12,9 @@ module.exports={
 
             res.render('admin/category/view_category', {
                 category,
-                alert
+                alert,
+                name: req.session.user.name,
+                title: 'Halaman Category'
             })
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
@@ -22,7 +24,10 @@ module.exports={
     },
     viewCreate: async(req, res)=>{
         try {
-            res.render('admin/category/create')
+            res.render('admin/category/create', {
+                name: req.session.user.name,
+                title: 'Halaman Menambahkan Category'
+            })
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
             req.flash('alertStatus', 'danger')
@@ -55,7 +60,9 @@ module.exports={
             const category = await Category.findOne({_id : id})
 
             res.render('admin/category/edit', {
-                category
+                category,
+                name: req.session.user.name,
+                title: 'Halaman Edit Category'
             })
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)

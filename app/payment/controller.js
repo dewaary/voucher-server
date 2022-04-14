@@ -16,7 +16,9 @@ module.exports={
 
             res.render('admin/payment/view_payment', {
                 payment,
-                alert
+                alert,
+                name: req.session.user.name,
+                title: 'Halaman Pembayaran'
             })
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
@@ -31,7 +33,9 @@ module.exports={
             console.log(banks);
             
             res.render('admin/payment/create', {
-                banks
+                banks,
+                name: req.session.user.name,
+                title: 'Halaman Tambah Pembayaran'
             })
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
@@ -70,7 +74,9 @@ module.exports={
 
             res.render('admin/payment/edit', {
                 payment,
-                banks
+                banks,
+                name: req.session.user.name,
+                title: 'Halaman Edit Pembayaran'
             })
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
