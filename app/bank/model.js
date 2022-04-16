@@ -5,7 +5,7 @@ let bankSchema = mongoose.Schema({
         type: String,
         require: [true, 'Nama pemilik harus diisi']
     },
-    namaBank: {
+    bankName: {
         type: String,
         require: [true, 'Nama Bank harus diisi']
     },
